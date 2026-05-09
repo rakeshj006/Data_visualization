@@ -1,5 +1,12 @@
 {
+  "name": "Data_visualization",
+  "version": "1.0.0",
+  "description": "Live company market dashboard",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
