@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Market Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="dashboard">
+    <section class="topbar">
+      <div>
+        <p class="eyebrow">Live Company Intelligence</p>
+        <h1 id="dashboardTitle">Company Dashboard</h1>
+        <p class="subtitle" id="dashboardSubtitle">Search a public company to load live market and financial data.</p>
+      </div>
+      <div class="period">
+        <span id="symbolBadge">LIVE</span>
+      </div>
+    </section>
+
+    <section class="search-panel" aria-label="Company search">
+      <form id="companyForm" class="search-form">
+        <label for="companyInput">Company name or stock symbol</label>
+        <div class="search-row">
+          <input id="companyInput" type="search" placeholder="Try Apple, Microsoft, Tesla, Infosys..." autocomplete="off" required>
+          <button type="submit">Load Dashboard</button>
+        </div>
+      </form>
+      <div id="statusMessage" class="status">Loading Apple Inc. as an example...</div>
+      <div id="suggestions" class="suggestions" aria-label="Company matches"></div>
+      <div class="quick-picks" aria-label="Quick company picks">
+        <button type="button" data-query="Apple">Apple</button>
+        <button type="button" data-query="Microsoft">Microsoft</button>
+        <button type="button" data-query="Tesla">Tesla</button>
+        <button type="button" data-query="Infosys">Infosys</button>
+        <button type="button" data-query="Nvidia">Nvidia</button>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Company summary">
+      <article class="metric interactive-card">
+        <span>Market Price</span>
+        <strong id="priceMetric">--</strong>
+        <small id="changeMetric">Waiting for data</small>
+      </article>
+      <article class="metric interactive-card">
+        <span>52 Week Range</span>
+        <strong id="rangeMetric">--</strong>
+        <small id="exchangeMetric">Exchange</small>
+      </article>
+      <article class="metric interactive-card">
+        <span>TTM Revenue</span>
+        <strong id="revenueMetric">--</strong>
+        <small id="revenueDateMetric">Latest reported period</small>
+      </article>
+      <article class="metric interactive-card">
+        <span>TTM Net Income</span>
+        <strong id="incomeMetric">--</strong>
+        <small id="incomeDateMetric">Latest reported period</small>
+      </article>
+    </section>
+
+    <section class="chart-grid" aria-label="Company charts">
+      <article class="panel panel-wide interactive-card">
+        <div class="panel-header">
+          <div>
+            <h2>1 Year Stock Price</h2>
+            <p id="priceChartNote">Monthly adjusted closing price</p>
+          </div>
+        </div>
+        <div class="chart-frame">
+          <canvas id="priceChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel interactive-card">
+        <div class="panel-header">
+          <div>
+            <h2>Quarterly Revenue</h2>
+            <p>Latest reported company revenue</p>
+          </div>
+        </div>
+        <div class="chart-frame">
+          <canvas id="quarterlyRevenueChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel interactive-card">
+        <div class="panel-header">
+          <div>
+            <h2>Quarterly Net Income</h2>
+            <p>Profit after expenses and taxes</p>
+          </div>
+        </div>
+        <div class="chart-frame">
+          <canvas id="netIncomeChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel interactive-card">
+        <div class="panel-header">
+          <div>
+            <h2>Monthly Trading Volume</h2>
+            <p>Shares traded across the last year</p>
+          </div>
+        </div>
+        <div class="chart-frame">
+          <canvas id="volumeChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel interactive-card">
+        <div class="panel-header">
+          <div>
+            <h2>Financial Mix</h2>
+            <p>Revenue, gross profit, and net income</p>
+          </div>
+        </div>
+        <div class="chart-frame">
+          <canvas id="mixChart"></canvas>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
